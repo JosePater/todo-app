@@ -41,3 +41,7 @@ export default {
 @tailwind components;
 @tailwind utilities;
 ```
+
+## Recursos tailwindcss
+- tailwindcss Play
+https://play.tailwindcss.com/GCAqWnPYVX?size=828x720
