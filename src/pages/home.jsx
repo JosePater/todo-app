@@ -9,9 +9,18 @@ export function Home() {
     // Agregar valores del localStorage al todos
     const todos = localStorage.getItem('todos'); // string
     if (todos) {
+      // Si hay valores -> agregar otros
       setTodos(JSON.parse(todos)); // JSON
     }
   }, []);
+
+  function onDeleteTodo(title) {
+    const todosLeft = todos.filter((task) => task.title !== title); // Borrar la tarea seleccionada
+    setTodos(todosLeft); // Actualiza el listado en la variable de estado
+    localStorage.setItem('todos', JSON.stringify(todosLeft)); // Actualiza el listado en localStorage
+    alert(`The task:  ${title}, deleted!`);
+
+  }
 
   function onCreateTodoApp(e) {
     e.preventDefault();
@@ -42,6 +51,7 @@ export function Home() {
         setTodos([...todos, task]);
         return localStorage.setItem('todos', JSON.stringify(currentTodos));
       }
+      setTodos([...todos, task]);
       // Añadir la primera tarea al localStorage
       localStorage.setItem('todos', JSON.stringify([task]));
     } else {
@@ -115,7 +125,10 @@ export function Home() {
                 key={i}
                 className={`mx-auto w-full max-w-md rounded border ${colorBorder} px-3 py-4`}
               >
-                <p>{todo.title}</p>
+                <div className="flex justify-between">
+                  <p>{todo.title}</p>
+                  <button onClick={() => onDeleteTodo(todo.title)}>❌</button>
+                </div>
               </div>
             );
           })}
