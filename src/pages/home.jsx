@@ -15,22 +15,35 @@ export function Home() {
 
   function onCreateTodoApp(e) {
     e.preventDefault();
-    const todo = {
+    const task = {
       title,
       priority,
     };
 
+    // Verificar texto de entrada
     if (title.length > 5) {
-      setTodos([...todos, todo]);
-      // Agregar al localStorage
+      // Agregar tareas al localStorage
       let currentTodos = localStorage.getItem('todos');
       if (currentTodos) {
+        // Convertirlo a su formato original
         currentTodos = JSON.parse(currentTodos);
-        currentTodos.push(todo);
+        // Comprobar si ya existe el título ingresado
+        const alreadyExists = currentTodos.find(
+          (item) => item.title === task.title
+        );
+        if (alreadyExists) {
+          return alert(`The task:  ${task.title}, is exist!`);
+        }
+
+        // ------ NO EXISTE TAREA INGRESADA ------
+
+        // Añadir otra nueva tarea al localStrage
+        currentTodos.push(task);
+        setTodos([...todos, task]);
         return localStorage.setItem('todos', JSON.stringify(currentTodos));
       }
-      // Primer valor en localStorage
-      localStorage.setItem('todos', JSON.stringify([todo]));
+      // Añadir la primera tarea al localStorage
+      localStorage.setItem('todos', JSON.stringify([task]));
     } else {
       alert('Title no valide');
     }
