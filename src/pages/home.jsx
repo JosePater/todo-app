@@ -1,19 +1,39 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function Home() {
   const [title, setTitle] = useState('');
-  const [priority, setPriority] = useState('');
+  const [priority, setPriority] = useState('low');
   const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    // Agregar valores del localStorage al todos
+    const todos = localStorage.getItem('todos'); // string
+    if (todos) {
+      setTodos(JSON.parse(todos)); // JSON
+    }
+  }, []);
 
   function onCreateTodoApp(e) {
     e.preventDefault();
-    setTodos([
-      ...todos,
-      {
-        title,
-        priority,
-      },
-    ]);
+    const todo = {
+      title,
+      priority,
+    };
+
+    if (title.length > 5) {
+      setTodos([...todos, todo]);
+      // Agregar al localStorage
+      let currentTodos = localStorage.getItem('todos');
+      if (currentTodos) {
+        currentTodos = JSON.parse(currentTodos);
+        currentTodos.push(todo);
+        return localStorage.setItem('todos', JSON.stringify(currentTodos));
+      }
+      // Primer valor en localStorage
+      localStorage.setItem('todos', JSON.stringify([todo]));
+    } else {
+      alert('Title no valide');
+    }
   }
 
   return (
