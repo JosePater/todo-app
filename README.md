@@ -1,4 +1,4 @@
-# Todo-app
+# Todo-app [React JS]
 
 ## Proyecto Básico
 
@@ -15,24 +15,22 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
 
-- Configuración
+- Configuración:
+
 ```javascript
-[tailwind.config.js]
+[tailwind.config.js];
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {},
   },
   plugins: [],
-}
+};
 ```
 
-- Añadir directivas Tailwindcss
+- Añadir directivas Tailwindcss:
 
 ```css
 [index.css]
@@ -43,5 +41,16 @@ export default {
 ```
 
 ## Recursos tailwindcss
-- tailwindcss Play
-https://play.tailwindcss.com/GCAqWnPYVX?size=828x720
+
+- Tailwindcss Play
+
+#
+
+# Funcionalidades de Todo-App
+
+## Almacenamiento: localStorage
+
+- Guardar tareas categorizadas por prioridad
+- Eliminar tareas (localStorage)
+- No guardar tareas repetidas
+- No guardar tareas en blanco
