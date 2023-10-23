@@ -73,14 +73,14 @@ export function Home() {
           {todos.map((todo, i) => {
             const colorBorder =
               todo.priority == 'high'
-                ? 'red'
+                ? 'border-red-500'
                 : todo.priority == 'medium'
-                ? 'orange'
-                : 'indigo';
+                ? 'border-orange-500'
+                : 'border-indigo-500';
             return (
               <div
                 key={i}
-                className={`mx-auto w-full max-w-md rounded border border-${colorBorder}-500 px-3 py-4`}
+                className={`mx-auto w-full max-w-md rounded border ${colorBorder} px-3 py-4`}
               >
                 <p>{todo.title}</p>
               </div>
