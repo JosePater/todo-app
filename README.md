@@ -44,6 +44,28 @@ export default {
 
 - Tailwindcss Play
 
+## Alertas: React Hot Toast
+
+- ```
+  npm install react-hot-toast
+  ```
+
+- ```javascript
+  [App.jsx];
+
+  import toast, { Toaster } from 'react-hot-toast';
+  const notify = () => toast('Here is your toast.');
+
+  const App = () => {
+    return (
+      <div>
+        <button onClick={notify}>Make me a toast</button>
+        <Toaster />
+      </div>
+    );
+  };
+  ```
+
 #
 
 # Funcionalidades de Todo-App
@@ -54,3 +76,7 @@ export default {
 - Eliminar tareas (localStorage)
 - No guardar tareas repetidas
 - No guardar tareas en blanco
+
+```
+
+```
