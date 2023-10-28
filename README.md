@@ -77,6 +77,10 @@ export default {
 - No guardar tareas repetidas
 - No guardar tareas en blanco
 
-```
+##
 
+# Ejecución de Todo-App
+
+```
+npm run dev
 ```
